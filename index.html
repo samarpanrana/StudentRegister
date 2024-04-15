@@ -87,17 +87,16 @@
     <div class="overlay">
         <div class="modal">
 
-            <!-- // Form has default values to make testing easier // -->
-            <form action="">
+            <form action="" id="form">
                 <h2>Register a student</h2>
                 <div>
                     <label for="username">Name:</label>
-                    <input type="text" name="username" id="username" required value="sam">
+                    <input type="text" name="username" id="username" required>
                 </div>
                 <div class="selectOpt">
                     <label for="userstream">Stream: </label>
                     <select name="userstream" id="userstream" required>
-                        <option value="Science" selected>Science</option>
+                        <option value="Science">Science</option>
                         <option value="Management">Management</option>
                         <option value="Business">Business</option>
                     </select>
@@ -105,29 +104,29 @@
                 </div>
                 <div>
                     <label for="usersection">Section:</label>
-                    <input value="1" type="number" name="usersection" id="usersection" min="1" max="18" required>
+                    <input type="number" name="usersection" id="usersection" min="1" max="18" required>
                 </div>
                 <div class="selectOpt">
                     <label for="usergrade">Grade:</label>
                     <select name="usergrade" id="usergrade" required>
-                        <option value=11 selected>11</option>
+                        <option value=11>11</option>
                         <option value=12>12</option>
                     </select>
                     <span><i class="fa-solid fa-caret-down"></i></span>
                 </div>
                 <div>
                     <label for="userroll">Roll.no:</label>
-                    <input value="2" type="number" name="userroll" id="userroll" min="1" max="100" required>
+                    <input type="number" name="userroll" id="userroll" min="1" max="100" required>
                 </div>
                 <div>
                     <label for="usercontact">Contact:</label>
-                    <input value="2" type="tel" name="usercontact" id="usercontact">
+                    <input type="tel" name="usercontact" id="usercontact">
                 </div>
                 <div>
                     <label for="userpfp" class="userpfplabel">Upload a photo</label>
                     <input type="file" name="userpfp" id="userpfp">
                 </div>
-                <button class="register">REGISTER</button>
+                <button type="submit" class="register">REGISTER</button>
             </form>
         </div>
     </div>

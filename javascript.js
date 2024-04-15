@@ -23,7 +23,7 @@ overlay.addEventListener("click", (e) => {
 registerButton.addEventListener("click", toggleModal);
 
 function toggleModal () {
-    // resetForm();
+    resetForm();
     if (overlay.style.visibility == 'visible') {
         overlay.style.visibility = 'hidden';
     }
@@ -52,10 +52,10 @@ function addStudentToClass(student) {
 function renderStudents () {
     let studentsDOM = document.querySelector('.students');
     studentsDOM.innerHTML = ``;
+    let counter = 0;
     for (person of myClass) {
-       
         studentsDOM.innerHTML += `
-        <div class="student">
+        <div class="student" data-index=${counter}>
                 <div class="userphoto">
                     <div class="pfp"></div>
                 </div>
@@ -88,17 +88,29 @@ function renderStudents () {
                     <span class="personal">${person.paid}</span>
                 </div>
         </div>`;
+        if (person.paid == `Yes`) {
+            let thisone = document.querySelector('.students').lastChild;
+            thisone.classList.add('paid');
+        }
+
+        counter++;
+    }
+    let studentCollection = document.querySelectorAll('.student');
+    for (student of studentCollection) {
+        student.addEventListener("click", (e) => {
+            payStudent(e);
+            renderStudents();
+        })
     }
 }
 
 // Register button event listener
 registerButtonTrue.addEventListener("click", (e) => {
-    e.preventDefault();
-
     let studentobj = new Student (username.value, userstream.value, usersection.value, usergrade.value, userroll.value, usercontact.value,userpfp.value);
     addStudentToClass(studentobj);
     renderStudents();
     toggleModal();
+    e.preventDefault();
 });
 
 // reset form 
@@ -111,3 +123,15 @@ function resetForm () {
     usercontact.value = ``;
     userpfp.value = ``;
 }   
+
+// pay student 
+function payStudent (event) {
+    let target = event.target;
+    if ( myClass[target.dataset.index].paid == `Yes`) {
+        myClass[target.dataset.index].paid = `No`;
+    }
+    else {
+        myClass[target.dataset.index].paid = `Yes`;
+    }
+   
+}
