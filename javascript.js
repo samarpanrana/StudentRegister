@@ -33,15 +33,17 @@ function toggleModal () {
 }
 
 // Student constructor function
-function Student (username, stream, section, grade, roll, contact, photo) {
-    this.username = username;
-    this.stream = stream;
-    this.section = section;
-    this.grade = grade;
-    this.roll = roll,
-    this.contact = contact;
-    this.photo = photo;
-    this.paid = `No`;
+class Student  {
+    constructor (username, stream, section, grade, roll, contact, photo)  {
+        this.username = username;
+        this.stream = stream;
+        this.section = section;
+        this.grade = grade;
+        this.roll = roll,
+        this.contact = contact;
+        this.photo = photo;
+        this.paid = `No`;
+    }
 }
 
 function addStudentToClass(student) {
